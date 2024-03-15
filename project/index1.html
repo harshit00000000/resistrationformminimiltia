@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9070618056873913"
+     crossorigin="anonymous"></script>
+<title>User Information Form</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  input[type="text"], input[type="email"], input[type="tel"], input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>User Information Form</h2>
+  <form  id="userForm" action="https://formspree.io/f/xayrbjzn" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Gmail ID:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="phone">Phone No:</label>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+<script>
+  document.getElementById("userForm").addEventListener("submit", function(event) {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var phone = document.getElementById("phone").value;
+    
+    // Basic email validation
+    if (!validateEmail(email)) {
+      alert("Please enter a valid email address.");
+      event.preventDefault();
+      return false;
+    }
+
+    // Basic phone number validation (10 digits)
+    if (!validatePhone(phone)) {
+      alert("Please enter a valid phone number.");
+      event.preventDefault();
+      return false;
+    }
+
+    // Proceed with form submission
+    alert("Form submitted successfully!");
+  });
+
+  function validateEmail(email) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+  }
+
+  function validatePhone(phone) {
+    var re = /^\d{10}$/;
+    return re.test(phone);
+  }
+</script>
+
+</body>
+</html>
